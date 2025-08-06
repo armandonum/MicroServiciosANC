@@ -1,34 +1,31 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../database/db');
+const { EntitySchema } = require('typeorm');
 
-const Agenda = sequelize.define('agenda', {
-  agendaID: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  nombres: {
-    type: DataTypes.STRING
-  },
-  apellidos: {
-    type: DataTypes.STRING
-  },
-
-  fecha_nacimiento: {
-    type: DataTypes.STRING
-  }, 
-   direccion: {
-    type: DataTypes.STRING
-  },
-  celular: {
-    type: DataTypes.STRING
-  },
-    correo: {
-    type: DataTypes.STRING
-  }
-}, {
+module.exports = new EntitySchema({
+  name: 'Agenda',
   tableName: 'agenda',
-  timestamps: false
+  columns: {
+    agendaID: {
+      primary: true,
+      type: 'int',
+      generated: true,
+    },
+    nombres: {
+      type: 'varchar',
+    },
+    apellidos: {
+      type: 'varchar',
+    },
+    fecha_nacimiento: {
+      type: 'varchar',
+    },
+    direccion: {
+      type: 'varchar',
+    },
+    celular: {
+      type: 'varchar',
+    },
+    correo: {
+      type: 'varchar',
+    },
+  },
 });
-
-module.exports = Agenda;

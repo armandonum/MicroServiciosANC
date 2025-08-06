@@ -1,16 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const Agenda = require('../models/agenda');
+const AppDataSource = require('../database/db');
 const crud = require('../controllers/crud');
 
 router.get('/', async (req, res) => {
   try {
-    const result = await Agenda.findAll();
-res.render('index.ejs', { result});
- } catch (error) {
-  res.send('Error al obtener registros: ' + error.message);
-}
-
+    const agendaRepo = AppDataSource.getRepository('Agenda');
+    const result = await agendaRepo.find();
+    res.render('index', { result });
+  } catch (error) {
+    res.send('Error al obtener registros: ' + error.message);
+  }
 });
 
 router.get('/create', (req, res) => {
@@ -18,9 +18,10 @@ router.get('/create', (req, res) => {
 });
 
 router.get('/edit/:id', async (req, res) => {
-  const id = req.params.id;
   try {
-    const agenda = await Agenda.findByPk(id);
+    const id = parseInt(req.params.id);
+    const agendaRepo = AppDataSource.getRepository('Agenda');
+    const agenda = await agendaRepo.findOneBy({ agendaID: id });
     res.render('edit', { agenda });
   } catch (error) {
     res.send('Error al obtener el registro');
@@ -28,9 +29,10 @@ router.get('/edit/:id', async (req, res) => {
 });
 
 router.get('/delete/:id', async (req, res) => {
-  const id = req.params.id;
   try {
-    await Agenda.destroy({ where: { agendaID: id } });
+    const id = parseInt(req.params.id);
+    const agendaRepo = AppDataSource.getRepository('Agenda');
+    await agendaRepo.delete({ agendaID: id });
     res.redirect('/');
   } catch (error) {
     res.send('Error al eliminar el registro');
