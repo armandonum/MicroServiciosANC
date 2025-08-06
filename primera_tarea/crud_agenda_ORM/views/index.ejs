@@ -35,23 +35,24 @@
     <thead >
         <tr class="bg-primary text-white">
             <th scope="col">ID</th>
-            <th scope="col">TITULO</th>
-            <th scope="col">DESCRIPCION</th>
-            <th scope="col">ACTIVIDAD</th>
-            <th scope="col">FECHA</th>
-            <th scope="col">LUGAR</th>
-            <th scope="col">ACCIONES</th>
+            <th scope="col">NOMBRES</th>
+            <th scope="col">APELLIDOS</th>
+            <th scope="col">FECHA NACIMIENTO</th>
+            <th scope="col">DIRECCION</th>
+            <th scope="col">CELULAR</th>
+            <th scope="col">CORREO</th>
         </tr>
     </thead>
     <tbody>
         <% result.forEach((agenda) => { %>
         <tr>
             <td><%= agenda.agendaID %></td>
-            <td><%= agenda.titulo %></td>
-            <td><%= agenda.descripcion %></td>
-            <td><%= agenda.actividad %></td>
-            <td><%= agenda.fecha %></td>
-            <td><%= agenda.lugar %></td>
+            <td><%= agenda.nombres %></td>
+            <td><%= agenda.apellidos %></td>
+            <td><%= agenda.fecha_nacimiento %></td>
+            <td><%= agenda.direccion %></td>
+            <td><%= agenda.celular %></td>
+            <td><%= agenda.correo %></td>
             <td>
                 <a href="/edit/<%= agenda.agendaID %>" class="btn btn-outline">editar</a>
                 <a href="/delete/<%= agenda.agendaID %>" class="btn btn-outline">borrar</a>

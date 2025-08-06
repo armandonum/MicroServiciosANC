@@ -7,19 +7,23 @@ const Agenda = sequelize.define('agenda', {
     primaryKey: true,
     autoIncrement: true
   },
-  titulo: {
+  nombres: {
     type: DataTypes.STRING
   },
-  descripcion: {
+  apellidos: {
     type: DataTypes.STRING
   },
-  actividad: {
+
+  fecha_nacimiento: {
+    type: DataTypes.STRING
+  }, 
+   direccion: {
     type: DataTypes.STRING
   },
-  fecha: {
+  celular: {
     type: DataTypes.STRING
   },
-  lugar: {
+    correo: {
     type: DataTypes.STRING
   }
 }, {
