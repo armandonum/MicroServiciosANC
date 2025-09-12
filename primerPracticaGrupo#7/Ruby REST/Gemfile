@@ -1,0 +1,15 @@
+source "https://rubygems.org"
+
+ruby "3.4.5"
+
+gem 'sinatra-cross_origin'
+
+gem 'rackup' 
+gem 'rack', '~> 3.2'
+gem 'sinatra'
+gem 'sinatra-contrib'
+gem 'mysql2'
+gem 'activerecord', '~> 8.0'
+gem 'swagger-blocks'
+
+gem "puma", "~> 7.0"
